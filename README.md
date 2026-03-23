@@ -16,6 +16,7 @@ docker compose up --build -d
 - API: **http://localhost:3000** (or whatever you set as `PORT` in `.env`)
 - On **container start**, the app **does not listen for HTTP** until it has finished an **initial fetch sequence** (5 attempts, 2.5s apart, 20s timeout per HTTP call). That way a new container **tries hard once** to seed Redis when outbound HTTPS to the rates API works.
 - Redis: **localhost:6380** on your machine (maps to 6379 inside the container). Compose overrides `REDIS_URL` for the `app` container to `redis://redis:6379`.
+- **CORS** is enabled (`origin: true`) so local SPAs (e.g. on port 8080) can call the API from the browser.
 
 ### Static API key
 
